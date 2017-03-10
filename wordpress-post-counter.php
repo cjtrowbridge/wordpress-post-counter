@@ -11,10 +11,12 @@ add_shortcode('post-counter', 'wpPostCounter');
 add_shortcode('post-counter-no-attribution', 'wpPostCounterNoAttribution');
 
 function wpPostCounterNoAttribution(){
+	global $wpdb;
 	$wpPostCount = $wpdb->get_row( "SELECT count(*) as 'Count' FROM $wpdb->posts", ARRAY_A );
 	echo '<span class="wordpress-post-counter">'.$wpPostCount[0]['Count'].'</span>';
 }
 function wpPostCounter(){
+	global $wpdb;
 	$wpPostCount = $wpdb->get_row( "SELECT count(*) as 'Count' FROM $wpdb->posts", ARRAY_A );
 	echo '<span class="wordpress-post-counter"><a href="https://github.com/cjtrowbridge/wordpress-post-counter" target="_blank" class="wordpress-post-counter-link">'.$wpPostCount[0]['Count'].'</a></span>';
 }
