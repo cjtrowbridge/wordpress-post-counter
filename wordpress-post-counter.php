@@ -12,6 +12,6 @@ add_shortcode('post-counter', 'wpPostCounter');
 function wpPostCounter(){
 	global $wpdb;
 	$wpPostCount = $wpdb->get_row( "SELECT count(*) as 'Count' FROM $wpdb->posts", ARRAY_A );
-	return '<span class="wordpress-post-counter">'.$wpPostCount['Count'].'</span>';
+	return '<span class="wordpress-post-counter">'.number_format($wpPostCount['Count']).'</span>';
 }
 
